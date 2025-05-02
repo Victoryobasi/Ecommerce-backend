@@ -13,7 +13,13 @@ const session = require('express-session');
 // const uploadMiddlewares = require('./middlewares/uploadMiddlewares');
 
 const app = express();
-app.use(cors());
+app.use(cors(
+    {
+        origin: 'http://localhost:4000', // Replace with your frontend URL
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true,
+    }   
+));
 // app.use(cookieParser());
 app.use(session({
     secret: 'yourSecretKey', // Replace with a secret string for security
